@@ -6,6 +6,10 @@ This is a social media application, following the tutorial provided by [freeCode
 
 * React 
 * Redux 
-* Firebase Authentication 
+* Firebase 
+    * Functions 
+    * Firestore (database)
+    * Authentication 
+    * Admin SDK 
 * Node JS 
 * 
