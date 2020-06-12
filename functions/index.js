@@ -24,6 +24,8 @@ exports.getScreams = functions.https.onRequest((request, response) => {
 
 
 exports.createScream = functions.https.onRequest((request, response) => {
+    if (request.method != "POST")
+
    const newScream = {
        body: request.body.body, 
        userHandle: request.body.userHandle, 
