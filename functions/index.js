@@ -1,14 +1,11 @@
-const functions = require('firebase-functions');
+const functions = require('firebase-functions')
 const admin = require('firebase-admin')
 
-admin.initializeApp() 
+const express = require('express')
+const app = express() 
 
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-exports.helloWorld = functions.https.onRequest((request, response) => {
- response.send("Hello world!");
-});
+
+admin.initializeApp() 
 
 exports.getScreams = functions.https.onRequest((request, response) => {
     admin.firestore().collection('screams').get()
@@ -24,7 +21,10 @@ exports.getScreams = functions.https.onRequest((request, response) => {
 
 
 exports.createScream = functions.https.onRequest((request, response) => {
-    if (request.method != "POST")
+    if (request.method != "POST") {
+        // invalid user request 
+        return response.status(400).json({error: "method not allowed"})
+    }
 
    const newScream = {
        body: request.body.body, 
